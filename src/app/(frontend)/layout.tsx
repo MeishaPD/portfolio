@@ -1,7 +1,14 @@
 import React from 'react'
-import './styles.css'
+import './globals.css'
+import { Metadata } from 'next'
+import { DM_Sans } from 'next/font/google'
+import { NavbarWrapper } from 'components/common/NavbarWrapper'
 
-export const metadata = {
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+})
+
+export const metadata: Metadata = {
   description: 'A blank template using Payload in a Next.js app.',
   title: 'Payload Blank Template',
 }
@@ -11,8 +18,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en">
-      <body>
-        <main>{children}</main>
+      <body className={dmSans.className}>
+        <NavbarWrapper />
+        <main className="min-h-screen max-w-screen flex flex-col">{children}</main>
       </body>
     </html>
   )
