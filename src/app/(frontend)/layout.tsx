@@ -9,8 +9,8 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+  description: "Meisha's Portfolio",
+  title: 'Meisha Putradewan. Software Engineer, but not only that.',
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {

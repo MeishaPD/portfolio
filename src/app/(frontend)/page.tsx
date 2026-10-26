@@ -45,7 +45,9 @@ export default async function Homepage() {
         className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 md:grid-cols-3 md:px-12"
       >
         <div className="order-2 relative z-10 md:order-1 md:pt-40">
-          <p className="mb-5 text-xs text-neutral-500">Building things that matter</p>
+          <p className="mb-5 text-xs text-neutral-500">
+            Curious by nature. An engineer by practice.
+          </p>
 
           <h1 className="max-w-md text-4xl font-medium leading-tight tracking-tight md:text-5xl">
             {homepage.heroHeadline || 'Building thoughtful digital experiences through technology.'}
@@ -231,40 +233,51 @@ export default async function Homepage() {
             </h2>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {homepage.services?.map((service, index) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3 items-stretch">
+            {homepage.services?.map((service) => {
               const image = getImageUrl(service.image)
 
               return (
                 <article
                   key={service.id}
-                  className={`rounded-2xl border p-6 transition-transform hover:-translate-y-2 ${
-                    index === 1
-                      ? 'border-orange-600 bg-[#FF4B24] text-white'
-                      : 'border-neutral-200 bg-white'
-                  }`}
+                  className="flex flex-col rounded-2xl p-2 transition-transform drop-shadow-md drop-shadow-white hover:-translate-y-2 bg-gray-100 hover:bg-black hover:drop-shadow-xl hover:drop-shadow-orange-300 group"
                 >
-                  <h3 className="mb-4 text-xl font-medium">{service.title} ↗</h3>
+                  <div className="px-4 py-2 items-center justify-between w-full overflow-hidden rounded-xl bg-white inline-flex group-hover:bg-orange-600">
+                    <h3 className="text-xl font-medium group-hover:text-white">{service.title}</h3>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="18px"
+                      viewBox="0 -960 960 960"
+                      width="20px"
+                      className="fill-current text-gray-500 group-hover:text-white"
+                    >
+                      <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z" />
+                    </svg>
+                  </div>
 
-                  <p className="mb-6 text-sm leading-relaxed opacity-75">{service.description}</p>
+                  <div className="flex flex-1 flex-col bg-white rounded-2xl p-4 mt-2 group-hover:bg-orange-600">
+                    <p className="mb-4 text-sm leading-relaxed opacity-75 group-hover:text-white group-hover:opacity-100">
+                      {service.description}
+                    </p>
 
-                  {image && (
-                    <img
-                      src={image}
-                      alt={service.title}
-                      className="mb-6 aspect-[1.5] w-full rounded-xl object-cover"
-                    />
-                  )}
+                    {image && (
+                      <img
+                        src={image}
+                        alt={service.title}
+                        className="mb-6 aspect-[1.5] w-full rounded-xl object-cover"
+                      />
+                    )}
 
-                  <div className="flex flex-wrap gap-2">
-                    {service.tags?.map((tag) => (
-                      <span
-                        key={tag.id}
-                        className="rounded-full border border-current px-3 py-1 text-xs"
-                      >
-                        {tag.label}
-                      </span>
-                    ))}
+                    <div className="mt-auto flex flex-wrap gap-2">
+                      {service.tags?.map((tag) => (
+                        <span
+                          key={tag.id}
+                          className="rounded-lg bg-gray-100 group-hover:bg-transparent group-hover:text-white group-hover:border group-hover:border-white px-3 py-1 text-xs"
+                        >
+                          {tag.label}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </article>
               )
@@ -329,48 +342,43 @@ export default async function Homepage() {
 
       {/* CONTACT */}
       <section id="contact" className="mx-auto max-w-7xl px-6 py-24 md:px-12">
-        <div className="flex items-center justify-between">
-          <h2 className="text-3xl font-medium tracking-tight">Contact</h2>
-
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 text-sm rounded-2xl border border-gray-200 text-gray-500 px-8 py-3 transition-colors duration-300 ease-in-out hover:border-gray-400 hover:text-gray-900"
-          >
-            More Contact
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-              fill="#6a7282"
-            >
-              <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
-            </svg>
-          </a>
-        </div>
-        <div className="mb-4 grid grid-cols-2 gap-2 md:grid-cols-4">
+        <div className="mb-4 grid grid-cols-2 gap-2 md:grid-cols-4 bg-gray-200 rounded-2xl p-2">
           {homepage.socialLinks?.map((link) => (
             <a
               key={link.id}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xl border border-neutral-200 px-5 py-3 text-center text-sm"
+              className="inline-flex rounded-xl border border-neutral-200 px-5 py-3 text-center bg-gray-100 items-center justify-center gap-2 transition-colors duration-300 ease-in-out hover:border-gray-400 hover:text-gray-900"
             >
-              {link.label} ↗
+              {link.label}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="18px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="#7F7F7F"
+              >
+                <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z" />
+              </svg>
             </a>
           ))}
         </div>
 
         <div className="grid min-h-125 overflow-hidden rounded-2xl bg-black text-white md:grid-cols-2">
-          <div className="min-h-87.5 bg-neutral-800">
-            {getImageUrl(homepage.contactPortrait) && (
-              <img
-                src={getImageUrl(homepage.contactPortrait)!}
-                alt="Contact portrait"
-                className="h-full w-full object-cover"
-              />
-            )}
+          <div className="relative min-h-87.5 bg-neutral-800 m-0 md:rounded-2xl overflow-hidden md:m-4">
+            <Image
+              src={
+                getImageUrl(homepage.contactPortrait)!
+                  ? getImageUrl(homepage.contactPortrait)!
+                  : '/images/contact.png'
+              }
+              alt="Contact portrait"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              loading="eager"
+              className="h-full w-full object-cover"
+            />
           </div>
 
           <div className="flex flex-col justify-between p-8 md:p-12">
@@ -382,9 +390,18 @@ export default async function Homepage() {
               {homepage.contactEmail && (
                 <a
                   href={`mailto:${homepage.contactEmail}`}
-                  className="inline-flex rounded-full bg-white px-6 py-3 text-sm text-black"
+                  className="inline-flex rounded-2xl bg-linear-to-tr from-white to-white px-6 py-3 text-sm text-black items-center justify-center gap-2 transition-colors duration-300 ease-in-out hover:from-[#FE4409] hover:to-[#FFDACE] from-55%"
                 >
-                  Email Me ↗
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#222020"
+                  >
+                    <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
+                  </svg>
+                  Email Me
                 </a>
               )}
             </div>
