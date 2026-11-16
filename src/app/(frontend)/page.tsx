@@ -1,6 +1,7 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export const revalidate = 60
 
@@ -160,7 +161,7 @@ export default async function Homepage() {
         <div className="mb-10 flex items-center justify-between">
           <h2 className="text-3xl font-medium tracking-tight">Featured Works</h2>
 
-          <a
+          <Link
             href="/works"
             className="inline-flex items-center gap-2 text-sm rounded-2xl border border-gray-200 text-gray-500 px-8 py-3 transition-colors duration-300 ease-in-out hover:border-gray-400 hover:text-gray-900"
           >
@@ -174,7 +175,7 @@ export default async function Homepage() {
             >
               <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
             </svg>
-          </a>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

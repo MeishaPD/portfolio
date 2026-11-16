@@ -3,6 +3,7 @@ import './globals.css'
 import { Metadata } from 'next'
 import { DM_Sans } from 'next/font/google'
 import { NavbarWrapper } from 'components/common/NavbarWrapper'
+import Chatbot from 'components/common/Chatbot'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -21,6 +22,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <body className={dmSans.className}>
         <NavbarWrapper />
         <main className="min-h-screen max-w-screen flex flex-col">{children}</main>
+        <Chatbot />
       </body>
     </html>
   )
