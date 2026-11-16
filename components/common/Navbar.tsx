@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence, easeInOut, easeOut } from 'motion/react'
